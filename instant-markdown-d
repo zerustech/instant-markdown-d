@@ -35,6 +35,38 @@ var md = new MarkdownIt({
   }
 });
 
+// Render info-box as follows:
+// Markdown:
+// ---------
+// ::: info-box note|tip|sidebar
+// content goes here ...
+// :::
+//
+// HTML:
+// ----
+// <div class="info-box-wrapper"><div class="info-box">
+// <div class="note|tip|sidebar"></div>
+// content goes here ...
+// </div></div>
+md.use(require('markdown-it-container'), 'info-box', {
+
+    validate: function(params) {
+        return params.trim().match(/^info-box\s+(.*)$/);
+    },
+
+    render: function(tokens, idx) {
+        var m = tokens[idx].info.trim().match(/^info-box\s+(.*)$/);
+
+        if (tokens[idx].nesting === 1) {
+            // opening tag
+            return '<div class="info-box-wrapper"><div class="info-box"><div class="' + m[1] + '"></div>';
+        } else {
+            // closing tag
+            return '</div></div>';
+        }
+    }
+});
+
 var lastWrittenMarkdown = '';
 function writeMarkdown(body) {
   lastWrittenMarkdown = md.render(body);
