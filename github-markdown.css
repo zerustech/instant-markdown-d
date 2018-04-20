@@ -756,3 +756,41 @@ td,th {
   position: relative;
   border-color: #4183c4;
 }
+
+/* info box */
+.info-box-wrapper {
+    position: relative;
+    margin: 1.5em 0;
+    padding: 10px 0 10px 0;
+}
+
+.info-box-wrapper .note,
+.info-box-wrapper .tip,
+.info-box-wrapper .sidebar
+{
+    width: 51px;
+    height: 51px;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.info-box-wrapper .note {
+    background: url("../images/note.gif") no-repeat scroll 0 0;
+}
+
+.info-box-wrapper .tip {
+    background: url("../images/tip.gif") no-repeat scroll 0 0;
+}
+
+.info-box-wrapper .sidebar {
+    background: url("../images/sidebar.gif") no-repeat scroll 0 0;
+}
+
+.info-box-wrapper .info-box {
+    font: 12px Consolas, "Liberation Mono", Menlo, Courier, monospace;
+    font-size: 85%;
+    background-color: #f5f5f5;
+    border-radius: 3px;
+    padding: 20px 20px 20px 64px;
+}
