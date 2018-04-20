@@ -794,3 +794,22 @@ td,th {
     border-radius: 3px;
     padding: 20px 20px 20px 64px;
 }
+
+/* Enable nested counters and scope for ordered list */
+.markdown-body ol {
+  counter-reset: item;
+}
+
+.markdown-body ol > li {
+  counter-increment: item;
+}
+
+.markdown-body ol ol > li {
+  list-style-type: none;
+}
+
+.markdown-body ol ol > li:before {
+  content: counters(item, ".") " ";
+  position: absolute;
+  margin-left: -2em;
+}
