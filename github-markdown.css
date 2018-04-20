@@ -756,3 +756,22 @@ td,th {
   position: relative;
   border-color: #4183c4;
 }
+
+/* Enable nested counters and scope for ordered list */
+.markdown-body ol {
+  counter-reset: item;
+}
+
+.markdown-body ol > li {
+  counter-increment: item;
+}
+
+.markdown-body ol ol > li {
+  list-style-type: none;
+}
+
+.markdown-body ol ol > li:before {
+  content: counters(item, ".") " ";
+  position: absolute;
+  margin-left: -2em;
+}
